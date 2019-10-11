@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__author__ = "Can Çakar"
+__author__ = "Can Çakar" # instagram.com/cancakar35
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import math
@@ -465,6 +465,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.verticalLayout.addWidget(self.groupBox)
         MainWindow.setCentralWidget(self.centralwidget)
         list1 = MainWindow.findChildren(QtWidgets.QLabel)
+        self.expression = self.label.text()
         self.phrase = 0
         self.curopr = ""
         self.labels = [i.objectName() for i in list1]
@@ -572,82 +573,42 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                         pass
                     elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
                         pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
                     else:
                         self.curopr = "add"
-                        self.num1 = self.label.text()
-                        self.label_17.setEnabled(False)
-                        self.label_18.setEnabled(False)
-                        self.label_19.setEnabled(False)
-                        self.label_20.setEnabled(False)
-                        self.label_29.setEnabled(False)
-                        self.label_33.setEnabled(False)
-                        self.label_31.setEnabled(False)
-                        self.label_34.setEnabled(False)
-                        self.label_35.setEnabled(False)
-                        self.label_36.setEnabled(False)
-                        self.label_30.setEnabled(False)
-                        self.label.setText("0")
+                        self.label.setText(self.label.text() + "+")
 
                 if object.text() == "-":
                     if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
                         pass
                     elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
                         pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
                     else:
                         self.curopr = "subt"
-                        self.num1 = self.label.text()
-                        self.label_17.setEnabled(False)
-                        self.label_18.setEnabled(False)
-                        self.label_19.setEnabled(False)
-                        self.label_20.setEnabled(False)
-                        self.label_29.setEnabled(False)
-                        self.label_33.setEnabled(False)
-                        self.label_31.setEnabled(False)
-                        self.label_34.setEnabled(False)
-                        self.label_35.setEnabled(False)
-                        self.label_36.setEnabled(False)
-                        self.label_30.setEnabled(False)
-                        self.label.setText("0")
+                        self.label.setText(self.label.text() + "-")
                 if object.text() == "×":
                     if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
                         pass
                     elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
                         pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
                     else:
                         self.curopr = "multi"
-                        self.num1 = self.label.text()
-                        self.label_17.setEnabled(False)
-                        self.label_18.setEnabled(False)
-                        self.label_19.setEnabled(False)
-                        self.label_20.setEnabled(False)
-                        self.label_31.setEnabled(False)
-                        self.label_29.setEnabled(False)
-                        self.label_33.setEnabled(False)
-                        self.label_34.setEnabled(False)
-                        self.label_35.setEnabled(False)
-                        self.label_36.setEnabled(False)
-                        self.label_30.setEnabled(False)
-                        self.label.setText("0")
+                        self.label.setText(self.label.text() + "*")
                 if object.text() == "÷":
                     if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
                         pass
                     elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
                         pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
                     else:
                         self.curopr = "div"
-                        self.num1 = self.label.text()
-                        self.label_17.setEnabled(False)
-                        self.label_18.setEnabled(False)
-                        self.label_19.setEnabled(False)
-                        self.label_20.setEnabled(False)
-                        self.label_31.setEnabled(False)
-                        self.label_29.setEnabled(False)
-                        self.label_33.setEnabled(False)
-                        self.label_34.setEnabled(False)
-                        self.label_35.setEnabled(False)
-                        self.label_36.setEnabled(False)
-                        self.label_30.setEnabled(False)
-                        self.label.setText("0")
+                        self.label.setText(self.label.text() + "/")
                 if object.text() == "=":
                     try:
                         if self.curopr == "":
@@ -664,100 +625,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                             self.label_35.setEnabled(True)
                             self.label_36.setEnabled(True)
                             self.label_30.setEnabled(True)
-                        elif self.curopr == "add":
-                            end = float(self.num1) + float(self.label.text())
-                            end2 = str(end)
-                            if end2.endswith(".0"):
-                                self.label.setText(end2[:-2])
-                            else:
-                                self.label.setText(end2)
-                            self.label_17.setEnabled(True)
-                            self.label_18.setEnabled(True)
-                            self.label_19.setEnabled(True)
-                            self.label_20.setEnabled(True)
-                            self.label_31.setEnabled(True)
-                            self.label_29.setEnabled(True)
-                            self.label_33.setEnabled(True)
-                            self.label_34.setEnabled(True)
-                            self.label_35.setEnabled(True)
-                            self.label_36.setEnabled(True)
-                            self.label_30.setEnabled(True)
-                        elif self.curopr == "subt":
-                            end = float(self.num1) - float(self.label.text())
-                            end2 = str(end)
-                            if end2.endswith(".0"):
-                                self.label.setText(end2[:-2])
-                            else:
-                                self.label.setText(end2)
-                            self.label_17.setEnabled(True)
-                            self.label_18.setEnabled(True)
-                            self.label_19.setEnabled(True)
-                            self.label_20.setEnabled(True)
-                            self.label_31.setEnabled(True)
-                            self.label_29.setEnabled(True)
-                            self.label_33.setEnabled(True)
-                            self.label_34.setEnabled(True)
-                            self.label_35.setEnabled(True)
-                            self.label_36.setEnabled(True)
-                            self.label_30.setEnabled(True)
-                        elif self.curopr == "multi":
-                            end = float(self.num1) * float(self.label.text())
-                            end2 = str(end)
-                            if end2.endswith(".0"):
-                                self.label.setText(end2[:-2])
-                            else:
-                                self.label.setText(end2)
-                            self.label_17.setEnabled(True)
-                            self.label_18.setEnabled(True)
-                            self.label_19.setEnabled(True)
-                            self.label_20.setEnabled(True)
-                            self.label_31.setEnabled(True)
-                            self.label_29.setEnabled(True)
-                            self.label_33.setEnabled(True)
-                            self.label_34.setEnabled(True)
-                            self.label_35.setEnabled(True)
-                            self.label_36.setEnabled(True)
-                            self.label_30.setEnabled(True)
-                        elif self.curopr == "div":
-                            try:
-                                end = float(self.num1) / float(self.label.text())
-                                end2 = str(end)
-                                if end2.endswith(".0"):
-                                    self.label.setText(end2[:-2])
-                                else:
-                                    self.label.setText(end2)
-                                self.label_17.setEnabled(True)
-                                self.label_18.setEnabled(True)
-                                self.label_19.setEnabled(True)
-                                self.label_20.setEnabled(True)
-                                self.label_31.setEnabled(True)
-                                self.label_29.setEnabled(True)
-                                self.label_33.setEnabled(True)
-                                self.label_34.setEnabled(True)
-                                self.label_35.setEnabled(True)
-                                self.label_36.setEnabled(True)
-                                self.label_30.setEnabled(True)
-                            except ZeroDivisionError:
-                                self.label.setText("Geçersiz İşlem")
-                        elif self.curopr == "x^y":
-                            end = self.num1 ** float(self.label.text())
-                            end2 = str(end)
-                            if end2.endswith(".0"):
-                                self.label.setText(end2[:-2])
-                            else:
-                                self.label.setText(str(end))
-                            self.label_17.setEnabled(True)
-                            self.label_18.setEnabled(True)
-                            self.label_19.setEnabled(True)
-                            self.label_20.setEnabled(True)
-                            self.label_31.setEnabled(True)
-                            self.label_29.setEnabled(True)
-                            self.label_33.setEnabled(True)
-                            self.label_34.setEnabled(True)
-                            self.label_35.setEnabled(True)
-                            self.label_36.setEnabled(True)
-                            self.label_30.setEnabled(True)
                         elif self.curopr == "log":
+                            for i in self.label.text():
+                                if i in ["+","*","/","-"]:
+                                    self.label.setText("Geçersiz İşlem")
                             end = math.log(self.num1, float(self.label.text()))
                             end2 = str(end)
                             if end2.endswith(".0"):
@@ -775,24 +646,9 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                             self.label_35.setEnabled(True)
                             self.label_36.setEnabled(True)
                             self.label_30.setEnabled(True)
-                        elif self.curopr == "mod":
-                            end = self.num1 % float(self.label.text())
-                            end2 = str(end)
-                            if end2.endswith(".0"):
-                                self.label.setText(end2[:-2])
-                            else:
-                                self.label.setText(str(end))
-                            self.label_17.setEnabled(True)
-                            self.label_18.setEnabled(True)
-                            self.label_19.setEnabled(True)
-                            self.label_20.setEnabled(True)
-                            self.label_31.setEnabled(True)
-                            self.label_29.setEnabled(True)
-                            self.label_33.setEnabled(True)
-                            self.label_34.setEnabled(True)
-                            self.label_35.setEnabled(True)
-                            self.label_36.setEnabled(True)
-                            self.label_30.setEnabled(True)
+                        else:
+                            self.expression = self.label.text()
+                            self.label.setText(str(eval(self.expression)))
                     except (ValueError, OverflowError):
                         self.label.setText("Geçersiz İşlem")
                 if object == self.label_25:
@@ -807,15 +663,15 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                     except (ValueError, OverflowError):
                         self.label.setText("Geçersiz İşlem")
                 if object == self.label_32:
-                    try:
-                        end = float(self.label.text()) ** 2
-                        end2 = str(end)
-                        if end2.endswith(".0"):
-                            self.label.setText(end2[:-2])
-                        else:
-                            self.label.setText(str(end))
-                    except (ValueError, OverflowError):
-                        self.label.setText("Geçersiz İşlem")
+                    if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
+                        pass
+                    elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
+                        pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
+                    else:
+                        self.curopr = "square"
+                        self.label.setText(self.label.text() + "**2")
                 if object == self.label_28:
                     try:
                         end = 10 ** float(self.label.text())
@@ -826,29 +682,25 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                     except (ValueError, OverflowError):
                         self.label.setText("Geçersiz İşlem")
                 if object == self.label_33:
-                    self.curopr = "x^y"
-                    self.num1 = float(self.label.text())
-                    self.label.setText("Üs Girin")
-                    self.label_17.setEnabled(False)
-                    self.label_18.setEnabled(False)
-                    self.label_19.setEnabled(False)
-                    self.label_20.setEnabled(False)
-                    self.label_29.setEnabled(False)
-                    self.label_33.setEnabled(False)
-                    self.label_31.setEnabled(False)
-                    self.label_34.setEnabled(False)
-                    self.label_35.setEnabled(False)
-                    self.label_36.setEnabled(False)
-                    self.label_30.setEnabled(False)
-                if object == self.label_27:
-                    if float(self.label.text()) < 0:
-                        self.label.setText("Geçersiz İşlem")
+                    if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
+                        pass
+                    elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
+                        pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
                     else:
-                        end = float(self.label.text()) ** 0.5
-                        if str(end).endswith(".0"):
-                            self.label.setText(str(end)[:-2])
-                        else:
-                            self.label.setText(str(end))
+                        self.curopr = "x^y"
+                        self.label.setText(self.label.text() + "**")
+                if object == self.label_27:
+                    if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
+                        pass
+                    elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
+                        pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
+                    else:
+                        self.curopr = "sqrroot"
+                        self.label.setText(self.label.text() + "**0.5")
                 if object == self.label_14: # negatif - pozitif sayı ayarlama düğmesi. Sorunlu çalışmaktadır.Düzeltilmesi gerekiyor.
                     if self.label.text().endswith("-"):
                         self.label.setText(self.label.text()[:-1] + "+")
@@ -858,58 +710,88 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                         self.label.setText(self.label.text() + "-")
                 if object == self.label_29:
                     self.curopr = "log"
-                    self.num1 = float(self.label.text())
-                    self.label.setText("Taban Girin")
-                    self.label_17.setEnabled(False)
-                    self.label_18.setEnabled(False)
-                    self.label_19.setEnabled(False)
-                    self.label_20.setEnabled(False)
-                    self.label_29.setEnabled(False)
-                    self.label_33.setEnabled(False)
-                    self.label_31.setEnabled(False)
-                    self.label_34.setEnabled(False)
-                    self.label_35.setEnabled(False)
-                    self.label_36.setEnabled(False)
-                    self.label_30.setEnabled(False)
+                    correct = True
+                    for i in self.label.text():
+                        if i in ["+","*","/","-"]:
+                            self.label.setText("Geçersiz İşlem")
+                            correct = False
+                            break
+                    if correct:
+                        self.num1 = float(self.label.text())
+                        self.label.setText("Taban Girin")
+                        self.label_17.setEnabled(False)
+                        self.label_18.setEnabled(False)
+                        self.label_19.setEnabled(False)
+                        self.label_20.setEnabled(False)
+                        self.label_29.setEnabled(False)
+                        self.label_33.setEnabled(False)
+                        self.label_31.setEnabled(False)
+                        self.label_34.setEnabled(False)
+                        self.label_35.setEnabled(False)
+                        self.label_36.setEnabled(False)
+                        self.label_30.setEnabled(False)
                 if object == self.label_31:
-                    self.curopr = "mod"
-                    self.num1 = float(self.label.text())
-                    self.label.setText("Mod Girin")
-                    self.label_17.setEnabled(False)
-                    self.label_18.setEnabled(False)
-                    self.label_19.setEnabled(False)
-                    self.label_20.setEnabled(False)
-                    self.label_29.setEnabled(False)
-                    self.label_33.setEnabled(False)
-                    self.label_31.setEnabled(False)
-                    self.label_34.setEnabled(False)
-                    self.label_35.setEnabled(False)
-                    self.label_36.setEnabled(False)
-                    self.label_30.setEnabled(False)
+                    if self.label.text().endswith(".") or self.label.text().endswith("(") or self.label.text().endswith(")"):
+                        pass
+                    elif self.label.text() == "Geçersiz İşlem" or self.label.text() == "Taban Girin" or self.label.text() == "Üs Girin" or self.label.text() == "Mod Girin":
+                        pass
+                    elif self.label.text().endswith("+") or self.label.text().endswith("-") or self.label.text().endswith("*") or self.label.text().endswith("/"):
+                        pass
+                    else:
+                        self.curopr = "mod"
+                        self.label.setText(self.label.text() + "%")
                 if object == self.label_34:
-                    end = math.sin(math.radians(float(self.label.text())))
-                    if str(end).endswith(".0"):
-                        self.label.setText(str(end)[:-2])
-                    else:
-                        self.label.setText(str(end))
+                    correct = True
+                    for i in self.label.text():
+                        if i in ["+","*","/","-"]:
+                            self.label.setText("Geçersiz İşlem")
+                            correct = False
+                            break
+                    if correct:
+                        end = math.sin(math.radians(float(self.label.text())))
+                        if str(end).endswith(".0"):
+                            self.label.setText(str(end)[:-2])
+                        else:
+                            self.label.setText(str(end))
                 if object == self.label_35:
-                    end = math.cos(math.radians(float(self.label.text())))
-                    if str(end).endswith(".0"):
-                        self.label.setText(str(end)[:-2])
-                    else:
-                        self.label.setText(str(end))
+                    correct = True
+                    for i in self.label.text():
+                        if i in ["+","*","/","-"]:
+                            self.label.setText("Geçersiz İşlem")
+                            correct = False
+                            break
+                    if correct:
+                        end = math.cos(math.radians(float(self.label.text())))
+                        if str(end).endswith(".0"):
+                            self.label.setText(str(end)[:-2])
+                        else:
+                            self.label.setText(str(end))
                 if object == self.label_36:
-                    end = math.tan(math.radians(float(self.label.text())))
-                    if str(end).endswith(".0"):
-                        self.label.setText(str(end)[:-2])
-                    else:
-                        self.label.setText(str(end))
+                    correct = True
+                    for i in self.label.text():
+                        if i in ["+","*","/","-"]:
+                            self.label.setText("Geçersiz İşlem")
+                            correct = False
+                            break
+                    if correct:
+                        end = math.tan(math.radians(float(self.label.text())))
+                        if str(end).endswith(".0"):
+                            self.label.setText(str(end)[:-2])
+                        else:
+                            self.label.setText(str(end))
                 if object == self.label_30:
-                    end = math.exp(float(self.label.text()))
-                    if str(end).endswith(".0"):
-                        self.label.setText(str(end)[:-2])
-                    else:
-                        self.label.setText(str(end))
+                    correct = True
+                    for i in self.label.text():
+                        if i in ["+","*","/","-"]:
+                            self.label.setText("Geçersiz İşlem")
+                            correct = False
+                            break
+                    if correct:
+                        end = math.exp(float(self.label.text()))
+                        if str(end).endswith(".0"):
+                            self.label.setText(str(end)[:-2])
+                        else:
+                            self.label.setText(str(end))
 
             self.label.setToolTip(self.label.text())
             return True
@@ -918,7 +800,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Scientific Calculator"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Scientific Calculator by Can Cakar"))
         self.label.setText(_translate("MainWindow", "0"))
         self.label_35.setText(_translate("MainWindow", "cos"))
         self.label_36.setText(_translate("MainWindow", "tan"))
@@ -964,13 +846,12 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-# ----------------Bu proje tamamlanMAMIŞtır----------------
+# ----------------Yapılacaklar Listesi----------------
 # Yapılacaklar:
 # 1 - Negatif - pozitif sayı tuşu sorunlu çalışmakta.
 # 2 - Parantezler kullanımı şu anda gereksiz kalıyor ve kullanıcı parantezlerele hata meydana getirebilir.(hata ile programın kapanması engellendi)
-# 3 - Kullanıcı çoklu işlem girip yapamıyor örneğin 1+2-5*(5+4) / 2! gibi
 # 4 - Yukarı ok tuşuna basılında fonksiyonel işlemler değiştirilecek ve yerlerine yenileri gösterilecek.
 #       Örneğin log yerine ln gelecek, tan yerine cot gelecek, sin yerine 1/sin (csc) gelecek gibi.Ancak tekrar basıldığında eski haline dönecek.
-# 4 numara için farklı labellar tanımlayıp üstüne raise yapabiliriz veya self.log = True / False gibi işlemlerle aynı label(buton) üzerinden işlemi yapabiliriz.
+#       farklı labellar tanımlayıp üstüne raise yapabiliriz veya self.log = True / False gibi işlemlerle aynı label(buton) üzerinden işlemi yapabiliriz.
 
 # © 2019 CAN ÇAKAR | Open Source
