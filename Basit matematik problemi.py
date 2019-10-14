@@ -1,3 +1,4 @@
+# 4 basamaklı en fazla bölene sahip en büyük sayıyı ekrana yazdıran program.
 maks = 0
 maks_bolen = 1
 for i in range(1000, 10000):
