@@ -1,5 +1,10 @@
+# faker modülünün kurulu olduğundan emin olun
+# faker modülünü indirmek için, terminale girip şunu yazın : pip install faker
 from faker import Faker # modülleri dahil ediyoruz
 from faker.providers import *
+
+# instagram.com/cancakar35
+# source: https://faker.readthedocs.io/en/master/providers.html
 
 fake = Faker("tr_TR") # faker objesini çağırdık. İçine tr_TR yazarak dili belirtiyoruz.
 
@@ -39,7 +44,7 @@ print(fake.credit_card_full()) # kredi kartı bilgileri
 print()
 print(fake.credit_card_number()) # kart numarası
 print()
-print(fake.credit_card_provider) # kart sağlayıcısı (visa vb.)
+print(fake.credit_card_provider()) # kart sağlayıcısı (visa vb.)
 print()
 
 print(fake.job()) # random iş
@@ -55,4 +60,4 @@ print(fake.profile()) # sahta insan (full bilgi)
 print()
 
 
-# Daha fazla özellik için -> https://faker.readthedocs.io/en/master/providers.html
+# Daha fazla bilgi için -> https://faker.readthedocs.io/en/master/providers.html
