@@ -56,7 +56,7 @@ print()
 print(fake.phone_number()) # telefon numarası
 print()
 
-print(fake.profile()) # sahta insan (full bilgi)
+print(fake.profile()) # sahte insan (full bilgi)
 print()
 
 
