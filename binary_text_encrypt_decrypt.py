@@ -59,11 +59,12 @@ crypt = {
 def encrypt(text):
     crypted_text = ""
     for i in text:
-        i = crypt.get(i)
-        crypted_text += i
+        i = bin(ord(i))
+        i = i.replace("b", "")
+        crypted_text += i + " "
     return crypted_text
 
-def decrypt(crypted):
+def decrypt(crypted_text):
     text = ""
     code = ""
     for i in crypted:
