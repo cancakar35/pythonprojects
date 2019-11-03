@@ -1,5 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from selenium import webdriver
 import time
+
+__author__ = "CAN ÇAKAR"
 
 class InstagramAuto():
     def __init__(self, username, password):
