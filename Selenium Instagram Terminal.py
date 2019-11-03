@@ -67,7 +67,7 @@ class InstagramBot:
                     flw.write(j + "\n")
             
         except Exception:
-            print("Something wrong...")
+            print("Something went wrong!")
     
     def get_followings(self):
         try:
@@ -99,7 +99,7 @@ class InstagramBot:
                     flwing.write(j + "\n")
                 
         except Exception:
-            print("Something wrong...")
+            print("Something went wrong!")
     
     def check_followers(self, old_list_file, new_list_file):
         with open(old_list_file, "r", encoding="UTF-8") as check:
