@@ -12,7 +12,7 @@ print("""
     |                                               |
     _________________________________________________
 """)
-st = input("Press operation: ").lower()
+st = input("Enter operation: ").lower()
 if st == "q":
     exit(0)
 elif st == "s":
