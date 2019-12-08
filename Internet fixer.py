@@ -18,7 +18,7 @@ if st == "q":
 elif st == "s":
     try:
         chc = requests.get("https://www.google.com", timeout=5)
-        print("Your internet connection is on")
+        print("You are already connected")
     except requests.ConnectionError:
         print("Starting internet fixer...")
         time.sleep(0.5)
@@ -30,7 +30,7 @@ elif st == "s":
         os.system("ipconfig/renew")
     try:
         chc = requests.get("https://www.google.com", timeout=5)
-        print("Your internet connection is on")
+        print("You are already connected")
     except requests.ConnectionError:
         print("\nPlease reset your network.\nPlease wait, opening network settings.When it open please go to Network Reset and reset your network")
         print("If you already did this step you should call your isp.")
